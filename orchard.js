@@ -50,9 +50,26 @@ const pinkPrice = .55
 */
 
 // CODE HERE
+let totalFujiAcres = 0
+let totalGalaAcres = 0
+let totalPinkAcres = 0
 
 
+for(i = 0; i < fujiAcres.length; i++){
+    totalFujiAcres += fujiAcres[i]
+}
+for(i = 0; i < galaAcres.length; i++){
+    totalGalaAcres += galaAcres[i]
+}
+for(i = 0; i < pinkAcres.length; i++){
+    totalPinkAcres += pinkAcres[i]
+}
 
+let totalAcres = totalFujiAcres + totalGalaAcres + totalPinkAcres
+
+console.log(totalAcres)
+
+//I did three separate for loops, one for each array of acres. This allows me to get a total for each individual array (which is set beforehand to 0) and then use that information to get a total for all three arrays. This will allow me to manipulate data for each individual array as well as all three combined. 
 
 
 // PROBLEM 2
@@ -69,8 +86,11 @@ const pinkPrice = .55
 
 // CODE HERE
 
+let averageDailyAcres = totalAcres / 7
 
+console.log(averageDailyAcres)
 
+//I could have done what I did in problem one and gotten the averages for each individual array and then added them together to get the same answer. If i had done this it would allow me to change the average if one type of apple was not harvested on all seven days. However, to keep it simple, and because all three types of apples were harvested on all seven days, I could divide the totalAcres by 7 days to get my average.
 
 
 // PROBLEM 3
@@ -107,7 +127,14 @@ let days = 0
 
 // CODE HERE
 
+while(acresLeft > 0){
+    acresLeft = acresLeft - 7;
+    days = days + 1;
+}
 
+console.log(days)
+
+// This problem took me a little bit longer to do because I wasn't sure how have the while loop do multiple things within the same loop. I had to Google it. Within the while loop the acresLeft variable is going down by seven and for each time that it goes down by seven a day is added to show the total number of days needed to completely harvest all of the acres.
 
 // PROBLEM 4
 
@@ -135,14 +162,34 @@ let days = 0
 
 // CODE HERE
 
-// let fujiTons =
-// let galaTons =
-// let pinkTons =
+let fujiTons = []
+let galaTons =[]
+let pinkTons =[]
+
+for(i=0; i<fujiAcres.length; i++){
+    fujiTons.push(fujiAcres[i] * 6.5)
+}
+for(i=0; i<galaAcres.length; i++){
+    galaTons.push(galaAcres[i] * 6.5)
+}
+for(i=0; i<pinkAcres.length; i++){
+    pinkTons.push(pinkAcres[i] * 6.5)
+}
+
+console.log(fujiTons)
+console.log(galaTons)
+console.log(pinkTons)
 
 
-
-
-
+//For this problem I did a for loop to loop through the old arrays and insert the number * 6.5 into the empty arrays I created for the total number of apples picked. Something that would have been easier would be to take my total apple acres that I calculated in problem 1 and multiplied that by 6.5 like I did in this comment. However, this would not create a new array, simply give me the total tons
+/*
+let fujiTons = totalFujiAcres * 6.5
+let galaTons = totalGalaAcres * 6.5
+let pinkTons = totalPinkAcres * 6.5
+console.log(fujiTons)
+console.log(galaTons)
+console.log(pinkTons)
+*/ 
 
 // PROBLEM 5
 
@@ -162,13 +209,27 @@ let days = 0
 
 // CODE HERE 
 
-// let fujiPounds =
-// let galaPounds =
-// let pinkPounds =
+let fujiPounds = 0
+let galaPounds = 0
+let pinkPounds = 0
+
+for(i=0; i<fujiTons.length; i++){
+    fujiPounds += fujiTons[i] * 2000
+}
+console.log(fujiPounds)
+
+for(i=0; i<galaTons.length; i++){
+    galaPounds += galaTons[i] * 2000
+}
+console.log(galaPounds)
+
+for(i=0; i<pinkTons.length; i++){
+    pinkPounds += pinkTons[i] * 2000
+}
+console.log(pinkPounds)
 
 
-
-
+// For this problem I started with all my variables at zero. I then did a for loop going through each tons array to get a total tonnage for each type of apple multiplying each number by 2000
 
 
 // PROBLEM 6
@@ -189,14 +250,15 @@ let days = 0
 
 // CODE HERE
 
-// let fujiProfit =
-// let galaProfit =
-// let pinkProfit =
+let fujiProfit = ((fujiPrice * fujiPounds) / 100)
+let galaProfit = ((galaPrice * galaPounds) / 100)
+let pinkProfit = ((pinkPrice * pinkPounds) / 100)
 
+console.log(fujiProfit)
+console.log(galaProfit)
+console.log(pinkProfit)
 
-
-
-
+//In order to find the total profit I needed to multiply the price per pound by the total pounds of apples gather. I than divided that number by 100 in order to get the profit in dollars instead of cents because no one uses change anymore. Dollars makes much more sense. If the price was wanted in cents, all I would have to do is not divide it by 100.
 
 // PROBLEM 7
 
@@ -209,3 +271,8 @@ let days = 0
 */
 
 // CODE HERE
+
+let totalProfit = fujiProfit + galaProfit + pinkProfit
+console.log(totalProfit)
+
+//This one is very straightforward. I simply added up all of the individual apple profits and made that equal to the total profit.
